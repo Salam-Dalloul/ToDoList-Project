@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS todos (
     user_id INTEGER REFERENCES users,
     PRIMARY KEY (id, user_id)
 );
-
-INSERT INTO todos (description, user_id) VALUES
-('sleep', 1),
-('eat', 2);
+-- 
+-- INSERT INTO todos (description, user_id) VALUES
+-- ('sleep', 1),
+-- ('eat', 2);
 
 COMMIT;
