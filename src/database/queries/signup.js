@@ -1,19 +1,9 @@
 const dbConnection = require('../dbconnection');
 
-const bcrypt = require('bcryptjs');
-
-const hashPassword = (password, callback) => {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(password, salt, (error, hash) => {
-      callback(null, hash);
-    });
-  });
-};
-
-const signup = (name, email, hashPassword, cb) => {
+const signup = (name, email, password, cb) => {
   const sql = {
-    text: 'insert into users (name, email, hashPasswor) values ($1, $2, $3);',
-    values: [name, email, hashPassword],
+    text: 'insert into users (name, email, password) values ($1, $2, $3);',
+    values: [name, email, password],
   };
 
   dbConnection.query(sql, (err, res) => {
